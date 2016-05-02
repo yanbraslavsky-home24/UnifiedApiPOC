@@ -4,6 +4,9 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.home24.api.endpoints.BaseEndpoint;
+import de.home24.api.endpoints.example.ExampleEndpoint;
+import de.home24.api.endpoints.example.model.MyRequest;
+import de.home24.api.endpoints.example.model.MyResponse;
 import de.home24.environment.emulation.AwsLambdaEmulatedContext;
 import de.home24.environment.models.UserModel;
 
@@ -18,7 +21,7 @@ import javax.ws.rs.core.Response;
  * RootController Controller will process all requests and rout them to relevant Endpoint
  */
 @Path("/example")
-public class ExampleController extends BaseEndpoint<UserModel, UserModel> {
+public class ExampleController {
 
     //we want to see our nulls in response for debug purposes
     private final Gson gson = new GsonBuilder().serializeNulls().create();
@@ -28,17 +31,19 @@ public class ExampleController extends BaseEndpoint<UserModel, UserModel> {
     public Response processRequest(@QueryParam("firstname") String firstName, @QueryParam("lastname") String lastName) {
 
         //Here we create the exact parameter model that we expect
-        UserModel user = new UserModel(firstName, lastName);
+        MyRequest request = new MyRequest(firstName, lastName);
 
-        //now we route the request through the endpoint handle exactly as API Gateway would do it
-        UserModel responseModel = handleRequest(user, new AwsLambdaEmulatedContext());
+        //Here we are resolving the concrete Endpoint that satisfies the request
+        //TODO : find a way to pick a right Endpoint...
+
+        //For a sake of a test we will assume that we have found the endpoint ...
+        ExampleEndpoint exampleEndpoint = new ExampleEndpoint();
+
+        //now we route the request through the endpoint handle method, exactly as API Gateway would do it
+        MyResponse responseModel = exampleEndpoint.handleRequest(request, new AwsLambdaEmulatedContext());
 
         //we are forwarding to the listener the response
         return Response.ok(gson.toJson(responseModel)).build();
     }
 
-    @Override
-    public UserModel handleRequest(UserModel request, Context context) {
-        return request;
-    }
 }

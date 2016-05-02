@@ -16,7 +16,6 @@ public class ExampleEndpoint extends BaseEndpoint<MyRequest, MyResponse> {
 
     @Override
     public MyResponse handleRequest(MyRequest request, Context context) {
-        String greetingString = String.format("Hello %s %s.", request.getFirstName(), request.getLastName());
-        return new MyResponse(greetingString);
+        return new MyResponse("Hello " + request.getFirstName(), "Welcome " + request.getLastName());
     }
 }

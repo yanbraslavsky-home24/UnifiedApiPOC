@@ -4,20 +4,14 @@ package de.home24.api.endpoints.example.model;
  * Created by yan.braslavski on 4/27/16.
  */
 public class MyResponse {
-    String greetings;
 
-    public String getGreetings() {
-        return greetings;
+    private final String registeredName;
+    private final String registeredLastName;
+
+
+    public MyResponse(String registeredName, String registeredLastName) {
+        this.registeredName = registeredName;
+        this.registeredLastName = registeredLastName;
     }
 
-    public void setGreetings(String greetings) {
-        this.greetings = greetings;
-    }
-
-    public MyResponse(String greetings) {
-        this.greetings = greetings;
-    }
-
-    public MyResponse() {
-    }
 }
