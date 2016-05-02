@@ -6,18 +6,18 @@ package de.home24.environment.models;
 public class UserModel {
 
     private final String username;
-    private final String password;
+    private final String lastname;
 
     public UserModel(String username, String password) {
         this.username = username;
-        this.password = password;
+        this.lastname = password;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getLastname() {
+        return lastname;
     }
 }

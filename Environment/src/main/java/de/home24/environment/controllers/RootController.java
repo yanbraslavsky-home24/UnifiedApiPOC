@@ -9,10 +9,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 /**
- * Root Controller will process all requests and rout them to relevant Endpoint
+ * RootController Controller will process all requests and rout them to relevant Endpoint
  */
 @Path("/")
-public class Root {
+public class RootController {
 
     @GET
     @Produces("application/json")
