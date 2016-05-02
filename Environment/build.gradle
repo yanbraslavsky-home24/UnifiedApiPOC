@@ -12,7 +12,9 @@ apply plugin: 'war'
 // See: http://www.gradle.org/docs/current/userguide/jetty_plugin.html
 apply plugin: 'jetty'
 
-// To Run simply use :   ./gradlew --daemon jettyRun
+// TODO : IMPORTANT !!! To Run the app simply use : ./gradlew --daemon :Environment:jettyRun
+// now go to http://localhost:8080/Environment/yourRegistered
+
 
 jettyRun {
     reload = "automatic"
