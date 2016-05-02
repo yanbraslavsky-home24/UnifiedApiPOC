@@ -1,0 +1,13 @@
+group 'de.home24.api'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+allprojects {
+
+    //Here you can define repositories that all projects wil use
+    repositories {
+        mavenCentral()
+    }
+}

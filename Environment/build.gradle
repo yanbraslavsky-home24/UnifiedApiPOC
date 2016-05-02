@@ -1,0 +1,15 @@
+group 'de.home24.api'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+//// IMPORTANT ! To run a local server just use ./gradlew run
+mainClassName = "de.home24.environment.Main"
+
+dependencies {
+    compile project(":Api")
+    compile 'org.eclipse.jetty:jetty-servlet:9.2.+'
+    compile 'com.google.code.gson:gson:2.2.+'
+}
