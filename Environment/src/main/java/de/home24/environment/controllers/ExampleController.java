@@ -1,14 +1,11 @@
 package de.home24.environment.controllers;
 
-import com.amazonaws.services.lambda.runtime.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import de.home24.api.endpoints.BaseEndpoint;
 import de.home24.api.endpoints.example.ExampleEndpoint;
 import de.home24.api.endpoints.example.model.MyRequest;
 import de.home24.api.endpoints.example.model.MyResponse;
 import de.home24.environment.emulation.AwsLambdaEmulatedContext;
-import de.home24.environment.models.UserModel;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -40,7 +37,7 @@ public class ExampleController {
         ExampleEndpoint exampleEndpoint = new ExampleEndpoint();
 
         //now we route the request through the endpoint handle method, exactly as API Gateway would do it
-        MyResponse responseModel = exampleEndpoint.handleRequest(request, new AwsLambdaEmulatedContext());
+        Object responseModel = exampleEndpoint.handleRequest(request, new AwsLambdaEmulatedContext());
 
         //we are forwarding to the listener the response
         return Response.ok(gson.toJson(responseModel)).build();
