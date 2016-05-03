@@ -18,6 +18,7 @@ apply plugin: 'jetty'
 
 jettyRun {
     reload = "automatic"
+    httpPort = 80
     scanIntervalSeconds = 1
 }
 
